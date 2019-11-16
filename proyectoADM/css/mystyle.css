@@ -1,0 +1,113 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    font-family: tahoma, sans-serif;
+    background: black;
+   /* background-image: url("img/redes.png"); /*imagen de fondo*/
+}
+
+.Container {  /*centrado de contenedor*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.MainImage {  /*dimensiones de la imagen principal, ancho, lto, overflow y cursor*/
+    width: 600px;
+    height: 338px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .MainImage img {  /*text-anchor del 100% y duración de la transición*/
+        width: 100%;
+        transition: .7s;
+    }
+
+.Container:hover .MainImage img {  /*efecto del hover, así como la opacidad de la transición*/
+    transform: rotate(-10deg) scale(3);
+    filter: blur(2px);
+    filter: contrast(150%);
+    filter: brightness(.5);
+    opacity: .7;
+}
+
+.MainText {  /*posición del contenedor principal*/
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+}
+
+.SecText {  /*color negro, opacidad 0 y todo el texto en mayúsculas*/
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 20px;
+    opacity: 0;
+    /*Opacity: 0 --- para que el texto solo sea visible cuando
+  pase el puntero del ratón por encima de la imagen (efecto hover)*/
+}
+
+    .SecText h2 {  /*color y tamaño de h2       */
+        color: green;
+        font-size: 25px;
+    }
+
+        .SecText h2 #GreenText {  /*color de la barra del subrayado*/
+            color: #96FD00;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #fff;
+        }
+
+    .SecText p {  /*texto secundario*/
+        position: absolute;
+        top: 180px;
+        width: 250px;
+        border-left: 4px solid #96FD00;
+        padding: 0 10px;
+    }
+
+/*Toque final*/
+
+.MainText::before,
+.MainText::after {  /*lineas laterales blancas*/
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: .7s;
+}
+
+.MainText::before {  /*líneas superiores e inferiores*/
+    border-top: 4px solid #000;
+    border-bottom: 1px solid #fff;
+    transform: scale(0,1);
+    /*transform: scale(1,0);*/
+}
+
+.MainText::after {
+    border-left: 1px solid #fff;  /*líneas izquierda y derecha*/
+    border-right: 1px solid #fff;
+    transform: scale(1,0);
+    /*transform: scale(0,1);*/
+}
+
+.Container:hover .MainText::before,
+.Container:hover .MainText::after {
+    transform: scale(1,1);  /*animación de las líneas*/
+}
+
+.Container:hover .SecText {
+    opacity: 1;
+}
+
+
+@media (max-width: 780px){
+    body{
+        background: #96FD00;
+    }
+}
